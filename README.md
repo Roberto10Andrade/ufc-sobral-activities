@@ -29,8 +29,6 @@ O sistema oferece uma gama completa de funcionalidades para o gerenciamento de a
     * **Tema Claro/Escuro:** Alternância de tema para melhor conforto visual.
     * **Design Responsivo:** Interface adaptável para diferentes tamanhos de tela (desktops, tablets e smartphones).
     * **Performance Otimizada:** Utilização do Next.js para renderização rápida e eficiente.
-* **Autenticação:**
-    * Sistema de autenticação simples com NextAuth, permitindo o login de usuários (atualmente com credenciais fixas para demonstração).
 * **Acessibilidade:**
     * Controles para ajuste de tamanho da fonte.
     * Opções de contraste (normal, alto contraste e cores invertidas).
