@@ -46,17 +46,6 @@ Este projeto foi construído com as seguintes tecnologias:
     * [Next.js](https://nextjs.org/) (v15.1.7)
     * [React](https://reactjs.org/) (v19.0.0)
     * [Tailwind CSS](https://tailwindcss.com/) (v3.4.1)
-    * [Framer Motion](https://www.framer.com/motion/) para animações.
-    * [Headless UI](https://headlessui.dev/) para componentes de UI acessíveis.
-    * [Heroicons](https://heroicons.com/) para ícones.
-* **Formulários:**
-    * [Formik](https://formik.org/) para gerenciamento de formulários.
-    * [Yup](https://github.com/jquense/yup) para validação de schemas.
-* **Autenticação:**
-    * [NextAuth.js](https://next-auth.js.org/)
-* **Qualidade de Código:**
-    * [ESLint](https://eslint.org/)
-    * [TypeScript](https://www.typescriptlang.org/)
 
 ---
 
@@ -73,21 +62,25 @@ Siga os passos abaixo para executar o projeto em seu ambiente de desenvolvimento
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/Roberto10Andrade/ufc-sobral-activities.git](https://github.com/Roberto10Andrade/ufc-sobral-activities.git)
+    git clone https://github.com/Roberto10Andrade/ufc-sobral-activities.git
+    ```
+
+2.  **Acesse a pasta do projeto:**
+      ```bash
     cd ufc-sobral-activities
     ```
 
-2.  **Instale as dependências:**
+3.  **Instale as dependências:**
     ```bash
     npm install --force
     ```
 
-3.  **Execute o projeto em modo de desenvolvimento:**
+4.  **Execute o projeto em modo de desenvolvimento:**
     ```bash
     npm run dev
     ```
 
-4.  **Acesse a aplicação:**
+5.  **Acesse a aplicação:**
     Abra seu navegador e acesse [http://localhost:3000](http://localhost:3000).
 
 ### Scripts Disponíveis
@@ -123,15 +116,6 @@ O projeto segue a estrutura de diretórios do App Router do Next.js:
 ├── tailwind.config.js    # Configurações do Tailwind CSS
 └── tsconfig.json         # Configurações do TypeScript
 ```
-
----
-
-## 🔐 Autenticação
-
-O sistema utiliza o **NextAuth.js** para autenticação. Atualmente, está configurado com um provedor de credenciais simples para fins de demonstração. As credenciais de teste são:
-
-* **E-mail:** `admin@ufc.br`
-* **Senha:** `admin123`
 
 ---
 
