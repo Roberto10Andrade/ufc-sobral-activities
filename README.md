@@ -1,4 +1,4 @@
-# UFC Sobral Activities
+# SGAA - UFC Sobral Activities
 
 ![Next.js](https://img.shields.io/badge/Next.js-15.1.7-black?style=flat-square&logo=next.js)
 ![React](https://img.shields.io/badge/React-19.0.0-blue?style=flat-square&logo=react)
