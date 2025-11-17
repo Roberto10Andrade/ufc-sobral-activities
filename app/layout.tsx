@@ -7,13 +7,8 @@ import Image from 'next/image'
 import { Providers } from './components/Providers'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
-import { metadata } from './metadata'
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
-
-const ThemeToggle = dynamic(() => import('./components/ThemeToggle'), {
-  ssr: false
-})
 
 const AccessibilityControls = dynamic(() => import('./components/AccessibilityControls'), {
   ssr: false

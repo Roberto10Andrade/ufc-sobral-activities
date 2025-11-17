@@ -20,13 +20,8 @@ interface ActivityListProps {
   onEdit?: (activity: Activity) => void;
 }
 
-export default function ActivityList({ activities, viewMode = 'grid', onDelete, onEdit }: ActivityListProps) {
+export default function ActivityList({ activities, viewMode = 'grid', onDelete }: ActivityListProps) {
   const [activityToDelete, setActivityToDelete] = useState<Activity | null>(null);
-  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-
-  const handleDeleteClick = (activity: Activity) => {
-    setActivityToDelete(activity);
-  };
 
   const handleDeleteConfirm = () => {
     if (activityToDelete && onDelete) {
@@ -143,8 +138,6 @@ export default function ActivityList({ activities, viewMode = 'grid', onDelete, 
             href={`/atividades/${activity.id}`}
             key={activity.id} 
             className="block bg-white dark:bg-gray-800 shadow-md hover:shadow-lg rounded-lg overflow-hidden transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700"
-            onMouseEnter={() => setHoveredCard(activity.id)}
-            onMouseLeave={() => setHoveredCard(null)}
           >
             <div className="flex flex-col sm:flex-row">
               <div className={`w-full sm:w-2 bg-gradient-to-b ${getActivityTypeGradient(activity.type)}`}></div>
@@ -208,8 +201,6 @@ export default function ActivityList({ activities, viewMode = 'grid', onDelete, 
           href={`/atividades/${activity.id}`}
           key={activity.id} 
           className="group bg-white dark:bg-gray-800 shadow-md hover:shadow-lg rounded-lg overflow-hidden transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full hover:border-blue-300 dark:hover:border-blue-700"
-          onMouseEnter={() => setHoveredCard(activity.id)}
-          onMouseLeave={() => setHoveredCard(null)}
         >
           <div className={`h-3 w-full bg-gradient-to-r ${getActivityTypeGradient(activity.type)}`}></div>
           <div className="p-5 flex-1 flex flex-col">

@@ -5,7 +5,6 @@ import { Activity, getActivities, deleteActivity } from '../data/activities';
 import Link from 'next/link';
 import ActivityList from '../components/ActivityList';
 import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
 
 export default function ActivitiesPage() {
   const [activities, setActivities] = useState<Activity[]>([]);
