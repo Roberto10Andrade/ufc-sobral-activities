@@ -2,6 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { Activity, getActivities } from '../data/activities';
 
 export default function SearchPage() {
@@ -64,10 +65,11 @@ export default function SearchPage() {
             <div key={activity.id} className="activity-card">
               {activity.imageUrl && (
                 <div className="relative h-48 mb-4 rounded-t-lg overflow-hidden">
-                  <img
+                  <Image
                     src={activity.imageUrl}
                     alt={activity.title}
-                    className="object-cover w-full h-full"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               )}
