@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { Activity } from '../data/activities'
 import DashboardStats from '../components/DashboardStats'
-// import Calendar from '../components/Calendar'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { motion } from 'framer-motion'
@@ -128,16 +127,6 @@ export default function Dashboard() {
             ))}
           </div>
         )}
-
-        {/* Calendário */}
-        {/* <div className="mt-8">
-          <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-            Calendário de Atividades
-          </h2>
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-            <Calendar activities={activities} />
-          </div>
-        </div> */}
       </div>
     </main>
   )
