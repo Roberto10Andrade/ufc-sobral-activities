@@ -21,7 +21,7 @@ export default function SearchBar() {
     return () => clearTimeout(delayDebounceFn);
   }, [query, router]);
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
       try {

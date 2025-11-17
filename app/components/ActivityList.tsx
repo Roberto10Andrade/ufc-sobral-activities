@@ -70,13 +70,15 @@ export default function ActivityList({ activities, viewMode = 'grid', onDelete }
 
   const getStatusBadge = (status: Activity['status']) => {
     switch (status) {
-      case 'SCHEDULED':
+      case 'UPCOMING':
+      case 'PENDING':
         return (
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-            Agendada
+            {status === 'UPCOMING' ? 'Agendada' : 'Pendente'}
           </span>
         );
       case 'IN_PROGRESS':
+      case 'ACTIVE':
         return (
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
             Em Andamento

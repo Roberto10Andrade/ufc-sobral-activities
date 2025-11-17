@@ -1,4 +1,4 @@
-import { Activity } from '@prisma/client';
+import { Activity } from '../data/activities';
 
 interface DashboardStatsProps {
   activities: Activity[];
@@ -6,13 +6,13 @@ interface DashboardStatsProps {
 
 export default function DashboardStats({ activities }: DashboardStatsProps) {
   const totalActivities = activities.length;
-  const completedActivities = activities.filter(a => a.status === 'completed').length;
-  const pendingActivities = activities.filter(a => a.status === 'pending').length;
+  const completedActivities = activities.filter(a => a.status === 'COMPLETED').length;
+  const pendingActivities = activities.filter(a => a.status === 'PENDING' || a.status === 'UPCOMING').length;
   const urgentActivities = activities.filter(a => {
-    const deadline = new Date(a.deadline);
+    const deadline = new Date(a.endDate);
     const today = new Date();
     const diffDays = Math.ceil((deadline.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
-    return diffDays <= 3 && a.status !== 'completed';
+    return diffDays <= 3 && a.status !== 'COMPLETED';
   }).length;
 
   const stats = [

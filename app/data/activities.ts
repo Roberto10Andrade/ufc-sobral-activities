@@ -3,7 +3,7 @@ export interface Activity {
   title: string;
   description: string;
   type: 'COURSE' | 'WORKSHOP' | 'SEMINAR' | 'RESEARCH' | 'EXTENSION' | 'OTHER';
-  status: 'ACTIVE' | 'UPCOMING' | 'COMPLETED' | 'CANCELLED';
+  status: 'PENDING' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED' | 'ACTIVE' | 'UPCOMING';
   startDate: string;
   endDate: string;
   time?: string;

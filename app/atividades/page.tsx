@@ -39,11 +39,6 @@ export default function ActivitiesPage() {
     // A lista será atualizada automaticamente pelo evento storage
   };
 
-  const handleEdit = (id: string) => {
-    // Redirecionar para a página de edição
-    window.location.href = `/atividades/edit/${id}`;
-  };
-
   const filteredActivities = activities.filter(activity => {
     if (filter.type !== 'ALL' && activity.type !== filter.type) return false;
     if (filter.status !== 'ALL' && activity.status !== filter.status) return false;
@@ -207,7 +202,6 @@ export default function ActivitiesPage() {
                 activities={filteredActivities}
                 viewMode={viewMode}
                 onDelete={handleDelete}
-                onEdit={handleEdit}
               />
             )}
           </div>
