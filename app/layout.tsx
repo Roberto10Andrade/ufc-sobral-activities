@@ -10,7 +10,7 @@ import { useState } from 'react'
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
 
-const AccessibilityControls = dynamic(() => import('./components/AccessibilityControls'), {
+const AccessibilityButton = dynamic(() => import('./components/AccessibilityButton'), {
   ssr: false
 })
 
@@ -93,6 +93,7 @@ export default function RootLayout({
                       </svg>
                       <span>Atividades</span>
                     </Link>
+                    <AccessibilityButton />
                   </nav>
                 </div>
               </div>
@@ -103,7 +104,6 @@ export default function RootLayout({
               <div className="p-8">
                 {children}
               </div>
-              <AccessibilityControls />
             </main>
 
             <Footer isNavbarVisible={isNavbarVisible} />
