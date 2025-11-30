@@ -63,65 +63,58 @@ export default function AccessibilityButton() {
   }
 
   return (
-    <div className="relative">
+    <div className="w-full">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="nav-link flex items-center gap-3 p-2 rounded-lg hover:bg-white/10 transition-all w-full"
+        className={`nav-link flex items-center gap-3 p-2 rounded-lg hover:bg-white/10 transition-all w-full ${
+          isOpen ? 'bg-white/10' : ''
+        }`}
         aria-label="Controles de acessibilidade"
         aria-expanded={isOpen}
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
         </svg>
-        <span>Acessibilidade</span>
+        <span className="flex-1 text-left">Acessibilidade</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={2}
+          stroke="currentColor"
+          className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
       </button>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="absolute left-full ml-4 top-0 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 w-80 border-2 border-gray-100 dark:border-gray-700 z-50"
-            role="dialog"
-            aria-label="Opções de acessibilidade"
+            className="overflow-hidden"
           >
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-[var(--primary-color)]">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                </svg>
-                Acessibilidade
-              </h2>
-              <button 
-                onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-                aria-label="Fechar"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            
-            <div className="space-y-5">
+            <div className="p-3 mt-2 bg-black/20 rounded-xl space-y-4">
+              {/* Tamanho da Fonte */}
               <div>
-                <h3 className="text-sm font-semibold mb-3 text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                <h3 className="text-xs font-semibold mb-2 text-white/80 flex items-center gap-2 uppercase tracking-wider">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
                   </svg>
-                  Tamanho da Fonte
+                  Fonte
                 </h3>
                 <div className="flex gap-2">
                   {(['normal', 'large', 'larger'] as FontSize[]).map((size) => (
                     <button
                       key={size}
                       onClick={() => updateFontSize(size)}
-                      className={`flex-1 px-4 py-3 rounded-lg font-semibold transition-all duration-200 ${
+                      className={`flex-1 px-2 py-2 rounded font-semibold text-sm transition-all duration-200 ${
                         fontSize === size
-                          ? 'bg-gradient-to-r from-[var(--primary-color)] to-[var(--primary-color-dark)] text-white shadow-lg scale-105'
-                          : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 hover:scale-105'
+                          ? 'bg-white text-[var(--primary-color)] shadow-md'
+                          : 'bg-white/10 text-white hover:bg-white/20'
                       }`}
                       aria-pressed={fontSize === size}
                     >
@@ -131,9 +124,10 @@ export default function AccessibilityButton() {
                 </div>
               </div>
 
+              {/* Contraste */}
               <div>
-                <h3 className="text-sm font-semibold mb-3 text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                <h3 className="text-xs font-semibold mb-2 text-white/80 flex items-center gap-2 uppercase tracking-wider">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
                   </svg>
                   Contraste
@@ -143,36 +137,34 @@ export default function AccessibilityButton() {
                     <button
                       key={mode}
                       onClick={() => updateContrast(mode)}
-                      className={`px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
+                      className={`px-3 py-2 rounded font-medium text-xs text-left transition-all duration-200 ${
                         contrast === mode
-                          ? 'bg-gradient-to-r from-[var(--primary-color)] to-[var(--primary-color-dark)] text-white shadow-lg scale-105'
-                          : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 hover:scale-105'
+                          ? 'bg-white text-[var(--primary-color)] shadow-md'
+                          : 'bg-white/10 text-white hover:bg-white/20'
                       }`}
                       aria-pressed={contrast === mode}
                     >
-                      {mode === 'normal' ? 'Contraste Normal' : mode === 'high' ? 'Alto Contraste' : 'Cores Invertidas'}
+                      {mode === 'normal' ? 'Normal' : mode === 'high' ? 'Alto Contraste' : 'Invertido'}
                     </button>
                   ))}
                 </div>
               </div>
 
+              {/* Dislexia */}
               <div>
-                <h3 className="text-sm font-semibold mb-3 text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                  </svg>
-                  Fonte para Dislexia
-                </h3>
                 <button
                   onClick={toggleDyslexicFont}
-                  className={`w-full px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
+                  className={`w-full px-3 py-2 rounded font-medium text-xs flex items-center gap-2 transition-all duration-200 ${
                     dyslexicFont
-                      ? 'bg-gradient-to-r from-[var(--primary-color)] to-[var(--primary-color-dark)] text-white shadow-lg scale-105'
-                      : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 hover:scale-105'
+                      ? 'bg-white text-[var(--primary-color)] shadow-md'
+                      : 'bg-white/10 text-white hover:bg-white/20'
                   }`}
                   aria-pressed={dyslexicFont}
                 >
-                  {dyslexicFont ? '✓ Fonte para Dislexia Ativa' : 'Ativar Fonte para Dislexia'}
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                  </svg>
+                  {dyslexicFont ? 'Fonte Dislexia Ativa' : 'Fonte para Dislexia'}
                 </button>
               </div>
             </div>
