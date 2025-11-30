@@ -4,7 +4,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import ThemeToggle from './ThemeToggle'
-import AccessibilityControls from './AccessibilityControls'
 
 interface FooterProps {
   isNavbarVisible: boolean;
@@ -68,7 +67,6 @@ export default function Footer({ isNavbarVisible }: FooterProps) {
             </p>
             <div className="flex items-center gap-4 pt-4">
               <ThemeToggle />
-              <AccessibilityControls />
             </div>
           </div>
 
