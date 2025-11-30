@@ -43,7 +43,7 @@ export default function RootLayout({
               </svg>
             </button>
 
-            <aside className={`fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-[var(--primary-color)] to-[var(--primary-color-dark)] text-white shadow-xl transform transition-transform duration-300 ${
+            <aside className={`fixed left-0 top-0 h-screen w-64 overflow-y-auto bg-gradient-to-b from-[var(--primary-color)] to-[var(--primary-color-dark)] text-white shadow-xl transform transition-transform duration-300 ${
               isNavbarVisible ? 'translate-x-0' : '-translate-x-full'
             }`}>
               <div className="pt-8 px-6">
@@ -54,7 +54,8 @@ export default function RootLayout({
                     width={200}
                     height={80}
                     priority
-                    className="w-full h-auto object-contain mb-4"
+                    style={{ width: '100%', height: 'auto' }}
+                    className="object-contain mb-4"
                   />
                 </div>
 

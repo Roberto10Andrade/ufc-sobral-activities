@@ -54,7 +54,7 @@ export default function Header() {
                     alt="UFC Sobral Logo"
                     width={450}
                     height={160}
-                    priority
+                    style={{ width: 'auto', height: 'auto' }}
                     className="
                       transition-all duration-500
                       group-hover:brightness-110
@@ -82,6 +82,7 @@ export default function Header() {
                   alt="UFC 70 Anos"
                   width={320}
                   height={72}
+                  style={{ width: 'auto', height: 'auto' }}
                   className="
                     transition-all duration-500
                     group-hover:brightness-110
