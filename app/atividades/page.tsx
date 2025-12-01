@@ -79,7 +79,7 @@ export default function ActivitiesPage() {
               </div>
               <div className="flex items-center gap-3">
                 <Link
-                  href="/atividades/nova"
+                  href="/atividades/new"
                   className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
                 >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -188,7 +188,7 @@ export default function ActivitiesPage() {
                   Não encontramos nenhuma atividade com os filtros selecionados. Tente ajustar os filtros ou criar uma nova atividade.
                 </p>
                 <Link
-                  href="/atividades/nova"
+                  href="/atividades/new"
                   className="mt-4 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
                 >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

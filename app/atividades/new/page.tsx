@@ -1,13 +1,20 @@
 'use client'
 
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import ActivityForm from '../../components/ActivityForm'
 import { Activity, getActivities, setActivities } from '../../data/activities'
-import { ArrowLeftIcon } from '@heroicons/react/24/outline'
+import { ArrowLeftIcon, CheckCircleIcon, XCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
+
+interface Message {
+  type: 'success' | 'error'
+  text: string
+}
 
 export default function NewActivity() {
   const router = useRouter()
+  const [message, setMessage] = useState<Message | null>(null)
 
   const handleSubmit = async (values: Activity) => {
     try {
@@ -20,9 +27,14 @@ export default function NewActivity() {
       activities.push(newActivity)
       setActivities(activities)
       
-      router.push('/atividades')
+      setMessage({ type: 'success', text: 'Atividade criada com sucesso!' })
+      
+      setTimeout(() => {
+        router.push('/atividades')
+      }, 1500)
     } catch (error) {
       console.error('Error creating activity:', error)
+      setMessage({ type: 'error', text: 'Erro ao criar atividade. Verifique os dados.' })
     }
   }
 
@@ -51,6 +63,30 @@ export default function NewActivity() {
       </div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl pt-8 pb-16">
+        {/* Mensagem de feedback */}
+        {message && (
+          <div className={`mb-4 px-4 py-3 rounded flex items-center justify-between ${
+            message.type === 'success' 
+              ? 'bg-green-100 border border-green-400 text-green-700' 
+              : 'bg-red-100 border border-red-400 text-red-700'
+          }`}>
+            <div className="flex items-center gap-2">
+              {message.type === 'success' ? (
+                <CheckCircleIcon className="w-5 h-5" />
+              ) : (
+                <XCircleIcon className="w-5 h-5" />
+              )}
+              <span>{message.text}</span>
+            </div>
+            <button 
+              onClick={() => setMessage(null)}
+              className="hover:opacity-70 transition-opacity"
+            >
+              <XMarkIcon className="w-5 h-5" />
+            </button>
+          </div>
+        )}
+
         <div className="mb-8 flex items-center">
           <Link
             href="/atividades"
